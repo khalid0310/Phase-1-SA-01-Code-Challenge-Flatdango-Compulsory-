@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flatdango - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Flatdango - Movie Ticket Booking</h1>
+    </header>
+    <main>
+        <section class="movie-menu">
+            <h2>Movie Menu</h2>
+            <ul id="films">
+                <!-- Movie items will be dynamically added here -->
+            </ul>
+        </section>
+        <section class="movie-details">
+            <h2>Movie Details</h2>
+            <!-- HTML structure where movie posters will be displayed -->
+                <div id="moviePosters"></div>
+                <!-- Include the JavaScript file -->
+                <script src="displayMovies.js"></script>
+            <div class="movie-info">
+                <img src="" alt="Movie Poster" id="poster">
+                <h3 id="title"></h3>
+                <p><strong>Runtime:</strong> <span id="runtime"></span> minutes</p>
+                <p><strong>Showtime:</strong> <span id="showtime"></span></p>
+                <p><strong>Available Tickets:</strong> <span id="available-tickets"></span></p>
+                <button id="buy-ticket">Buy Ticket</button>
+            </div>
+            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Flatdango Movie Theater</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

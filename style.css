@@ -1,0 +1,150 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li, button {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background and overall styles */
+body {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    background-color: #222;
+    padding: 10px;
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+/* Movie menu styles */
+.movie-menu {
+    flex-basis: 30%;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+ul#films {
+    list-style: none;
+    padding: 0;
+}
+
+li.film {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+li.film:hover {
+    background-color: #555;
+}
+
+/* Movie details styles */
+.movie-details {
+    flex-basis: 65%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #666;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+    text-align: left;
+}
+
+.movie-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.movie-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Buy ticket button styles */
+#buy-ticket {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#buy-ticket:hover {
+    background-color: #d32f2f;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 0 0 10px 10px;
+}
+
+footer p {
+    font-size: 1rem;
+}
+/* Style for the movie posters container */
+#moviePosters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; 
+  }
+  
+  /* Style for each movie poster image */
+  #moviePosters img {
+    max-width: 200px; 
+    height: auto; 
+    border: 1px solid #ddd; 
+    margin: 5px; /* Add some margin around each image */
+  }
+  /* style.css */
+
+/* Style the movie menu title */
+.movie-menu h2 {
+    font-size: 30px; /* Larger font size */
+    font-weight: 800; /* Heavier font weight */
+    text-transform: uppercase;
+    text-decoration: underline; /* Underline text */
+    color: red; /* Red color */
+  }
+
+/* style.css */
+
+/* Style the movie menu */
+#films {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #films li {
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+/* Google Fonts for cool fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
