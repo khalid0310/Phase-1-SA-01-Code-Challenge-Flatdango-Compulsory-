@@ -77,7 +77,7 @@ li.film:hover {
 
 .movie-info h3 {
     font-size: 1.8rem;
-    margin-bottom: 10px;
+    margin-bottom: 300px;
 }
 
 /* Buy ticket button styles */
@@ -166,7 +166,7 @@ main {
 .movie-details {
     flex: 2;
     padding: 20px;
-    background-color: #fff;
+    background-color: #110c0c;
 }
 
 .movie-search {
@@ -190,8 +190,14 @@ main {
     padding: 10px 20px;
     cursor: pointer;
 }
-
-/* The rest of your existing styles */
-
-/* Google Fonts for cool fonts */
+/* Add this CSS to your style.css or within a <style> element in your HTML */
+.movie-poster-container img {
+    max-width: 200px;
+    height: auto;
+    border: 2px solid #241f1f; /* Change the border color to white */
+    padding: 10px; /* Adjust the padding to control the spacing around the image */
+    cursor: pointer;
+    color: #332828;
+  }
+  
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');

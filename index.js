@@ -1,74 +1,105 @@
-fetchMovieData();
+let tickets;
 
-handleBuyTicket();
-handleSearch();
-const moviesData = [];
-
-function fetchMovieData() {
-  fetch('db.json')
-    .then((response) => response.json())
+function fetchAll() {
+  fetch('http://localhost:3000/films')
+    .then((res) => res.json())
     .then((data) => {
-      moviesData.push(...data.films);
-      displayMoviePosters('moviePosters', moviesData);
-      populateMovieMenu('films', moviesData);
+      fetchmovie(data); // Display movies in the list
+      if (data.length > 0) {
+        fetchMovieDetails(data[0]); // Display the details of the first movie
+      }
     })
-    .catch((error) => {
-      console.error('Error fetching JSON data:', error);
-    });
+    .catch((error) => console.log(error));
 }
 
-function displayMoviePosters(containerId, movies) {
-  const moviePostersContainer = document.getElementById(containerId);
+function fetchMovieDetails(movie) {
+  fetch(`http://localhost:3000/films/${movie.id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      displayAllDetails(data);
+    })
+    .catch((error) => console.log(error));
+}
 
-  movies.forEach((movie) => {
-    const imgElement = document.createElement('img');
-    imgElement.src = movie.poster;
-    imgElement.alt = movie.title;
+function displayAllDetails(movie) {
+  // Display movie details here
+  const movieDetails = document.querySelector('.movie-details');
+  // Update the content of movieDetails with movie information.
+  movieDetails.innerHTML = `
+    <h2>${movie.title}</h2>
+    <img src="${movie.poster}" alt="Movie Poster">
+    <p>Total minutes: ${movie.runtime}</p>
+    <p>Start Time: ${movie.showtime}</p>
+    <button id="buy-ticket">Buy Ticket</button>
+    <span>Tickets Available: ${movie.capacity - movie.tickets_sold}</span>
+  `;
 
-    imgElement.addEventListener('click', () => {
-      fetchMovieDetails(movie);
-    });
-
-    moviePostersContainer.appendChild(imgElement);
+  // Handle Buy Ticket button click
+  const buyButton = document.getElementById('buy-ticket');
+  buyButton.addEventListener('click', () => {
+    buyTicket(movie);
   });
 }
 
-function populateMovieMenu(menuId, movies) {
-  const menu = document.getElementById(menuId);
-
-  movies.forEach((movie) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = movie.title;
-    listItem.addEventListener('click', () => {
-      fetchMovieDetails(movie);
-    });
-    menu.appendChild(listItem);
-  });
-}
-
-function handleBuyTicket() {
-  const buyTicketButton = document.getElementById('buy-ticket');
-  buyTicketButton.addEventListener('click', () => {
+function buyTicket(movie) {
+  // Handle ticket purchase logic here
+  if (movie.capacity > movie.tickets_sold) {
     alert('Congratulations! You have successfully purchased a ticket.');
-  });
+    const newTicketsSold = movie.tickets_sold + 1;
+    Updatedata(movie, newTicketsSold);
+  } else {
+    alert('Sorry, no tickets available.');
+  }
 }
 
-function handleSearch() {
-  const searchInput = document.getElementById('search-input');
+function Updatedata(movie, ticketsSold) {
+  fetch(`http://localhost:3000/films/${movie.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      tickets_sold: ticketsSold,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      fetchMovieDetails(data);
+    });
+}
+
+function fetchmovie(movies) {
   const filmsList = document.getElementById('films');
 
-  searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase();
+  // Clear existing movie list
+  filmsList.innerHTML = '';
 
-    moviesData.forEach((movie) => {
-      const title = movie.title.toLowerCase();
-      const listItem = filmsList.querySelector(`li:contains("${movie.title}")`);
+  movies.forEach((movie, i) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = movie.title;
+    listItem.addEventListener('click', () => fetchMovieDetails(movie));
+    filmsList.appendChild(listItem);
 
-      if (title.includes(searchTerm)) {
-        listItem.style.display = 'block';
-      } else {
-        listItem.style.display = 'none';
-      }
-    });
+    if (i === 0) {
+      fetchMovieDetails(movie);
+    }
   });
 }
+
+document.addEventListener('DOMContentLoaded', fetchAll);
+
+// Movie search functionality
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const movieListItems = document.querySelectorAll('#films li');
+
+  movieListItems.forEach((item) => {
+    const movieTitle = item.textContent.toLowerCase();
+    if (movieTitle.includes(searchTerm)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
