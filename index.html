@@ -12,17 +12,18 @@
     </header>
     <main>
         <section class="movie-menu">
+            <section class="movie-search">
+                <h2>Movie Search</h2>
+                <input type="text" id="search-input" placeholder="Enter movie title">
+                <button id="search-button">Search</button>
+            </section>
             <h2>Movie Menu</h2>
             <ul id="films">
-                <!-- Movie items will be dynamically added here -->
             </ul>
         </section>
         <section class="movie-details">
             <h2>Movie Details</h2>
-            <!-- HTML structure where movie posters will be displayed -->
-                <div id="moviePosters"></div>
-                <!-- Include the JavaScript file -->
-                <script src="displayMovies.js"></script>
+            <div id="moviePosters"></div>
             <div class="movie-info">
                 <img src="" alt="Movie Poster" id="poster">
                 <h3 id="title"></h3>
@@ -31,12 +32,11 @@
                 <p><strong>Available Tickets:</strong> <span id="available-tickets"></span></p>
                 <button id="buy-ticket">Buy Ticket</button>
             </div>
-            
         </section>
     </main>
     <footer>
         <p>&copy; 2023 Flatdango Movie Theater</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

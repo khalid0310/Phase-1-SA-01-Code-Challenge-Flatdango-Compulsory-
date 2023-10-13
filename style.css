@@ -1,4 +1,4 @@
-/* Reset some default styles */
+
 body, h1, h2, h3, p, ul, li, button {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@ body, h1, h2, h3, p, ul, li, button {
 /* Background and overall styles */
 body {
     background-color: #333;
-    color: #fff;
+    color: #ece8e8;
     text-align: center;
     padding: 20px;
 }
@@ -72,6 +72,7 @@ li.film:hover {
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 10px;
+    color: #181111;
 }
 
 .movie-info h3 {
@@ -117,7 +118,7 @@ footer p {
   #moviePosters img {
     max-width: 200px; 
     height: auto; 
-    border: 1px solid #ddd; 
+    border: 1px solid #181111; 
     margin: 5px; /* Add some margin around each image */
   }
   /* style.css */
@@ -145,6 +146,52 @@ footer p {
     font-weight: bold;
     text-transform: uppercase;
   }
-  
+  /* Your existing styles */
+
+/* Style the main container layout */
+main {
+    display: flex;
+    flex-direction: row; /* Make the menu and details side by side */
+    justify-content: space-between; /* Separate menu and details */
+    align-items: flex-start; /* Align items at the top */
+}
+
+.movie-menu {
+    flex: 1;
+    padding: 20px;
+    background-color: #444;
+    color: white;
+}
+
+.movie-details {
+    flex: 2;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.movie-search {
+    background-color: #444;
+    color: white;
+    padding: 20px;
+}
+
+#search-input {
+    font-size: 18px;
+    padding: 10px;
+    width: 70%;
+    margin-right: 10px;
+}
+
+#search-button {
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* The rest of your existing styles */
+
 /* Google Fonts for cool fonts */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
